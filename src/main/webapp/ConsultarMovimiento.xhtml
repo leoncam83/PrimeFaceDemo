@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<f:metadata>
+		<f:viewAction action="#{consultaMovimientoBean.consultar}" />
+	</f:metadata>
+
+	<ui:define name="titulo">Consulta de Movimiento</ui:define>
+
+	<ui:define name="cuerpo">
+		<h1>Consulta de Movimiento</h1>
+		<h:form id="form">
+
+			<h:dataTable value="#{consultaMovimientoBean.movimientos}"
+				var="movimiento" border="1" cellpadding="0" cellspacing="2">
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="persona" />
+					</f:facet>
+					<h:outputText value="#{movimiento.persona.nombres}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripción" />
+					</f:facet>
+					<h:outputText value="#{movimiento.descripcion}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo" />
+					</f:facet>
+					<h:outputText value="#{movimiento.tipoMovimiento}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="valor" />
+					</f:facet>
+					<h:outputText value="#{movimiento.valor}" >
+						<f:convertNumber type="currency"  locale="es_CO" />
+					</h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha de Vencimiento" />
+					</f:facet>
+					<h:outputText value="#{movimiento.fechaVencimiento}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha de Pago" />
+					</f:facet>
+					<h:outputText value="#{movimiento.fechaPago}" >
+						<f:convertDateTime pattern="dd - MMMM - yyyy" locale="es_CO" />
+					</h:outputText>
+				</h:column>
+			</h:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

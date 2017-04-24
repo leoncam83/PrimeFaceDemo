@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composites="http://xmlns.jcp.org/jsf/composite">
+
+<h:head>
+	<title>Propiedades Comunes</title>
+	<script>
+		function modificarValor() {
+			var campo = document.getElementById("form:campo");
+			campo.value = "Valor modificado";
+
+		}
+	</script>
+	<style>
+.campo {
+	background-color: #ccc;
+	color: white;
+}
+</style>
+</h:head>
+<h:body>
+	<h:outputStylesheet library="css" name="style.css" />
+	<!-- 	<h:outputScript library="" name="" /> -->
+
+	<h:form id="form">
+
+		<!-- 		<h:inputText id="campo" rendered="false"/> -->
+
+		<h:inputText id="campo" styleClass="campo"
+			style="border-color: blue; border-style: dotted;" rendered="true"
+			onchange="this.value = this.value.toUpperCase();"
+			onmouseover="this.style.backgroundColor = 'yellow';"
+			onmouseout="this.style.backgroundColor = '#ccc';" size="100" />
+		<br />
+		<br />
+		<h:inputSecret />
+		<br />
+		<br />
+		<h:inputTextarea cols="10" rows="5" />
+		<br />
+		<br />
+		<h:outputText value="Bienvenido" />
+		<br />
+		<br />
+		<h:outputFormat value="Hola {0} la temperatura de hoy es {1} ">
+			<f:param value="leonardo" />
+			<f:param value="16°" />
+		</h:outputFormat>
+		<br />
+		<br />
+		<h:outputLabel value="nombre:" for="nombreInput" />&nbsp;
+		<h:inputText id="nombreInput" value="nombre" />
+		<br />
+		<br />
+		<h:outputLabel value="Equipos Favorito:" for="equipos" />&nbsp;
+		
+		<h:selectOneMenu value="#{componenteBean.equipoFavorito}" id="equipos">
+			<f:selectItem itemValue="Nacional" itemLabel="Atletico Nacional" />
+			<f:selectItem itemValue="jaguares" />
+			<f:selectItem itemValue="junior" />
+			<f:selectItem itemValue="america" />
+			<f:selectItem itemValue="deportivo cali" />
+		</h:selectOneMenu>
+
+		<br />
+		<br />
+
+		<h:outputLabel value="Equipos Favoritos:" for="favoritos" />&nbsp;
+		<h:selectManyMenu value="#{componenteBean.equiposFavoritos}"
+			id="favoritos">
+			<f:selectItem itemValue="Nacional" itemLabel="Atletico Nacional" />
+			<f:selectItem itemValue="jaguares" />
+			<f:selectItem itemValue="junior" />
+			<f:selectItem itemValue="america" />
+			<f:selectItem itemValue="deportivo cali" />
+		</h:selectManyMenu>
+
+		<br />
+		<br />
+
+		<h:outputLabel value="Equipos Favorito:" for="equipos2" />&nbsp;
+		<h:selectOneListbox value="#{componenteBean.equipoFavorito}"
+			id="equipos2" size="4">
+			<f:selectItem itemValue="Nacional" itemLabel="Atletico Nacional" />
+			<f:selectItem itemValue="jaguares" />
+			<f:selectItem itemValue="junior" />
+			<f:selectItem itemValue="america" />
+			<f:selectItem itemValue="deportivo cali" />
+		</h:selectOneListbox>
+		<br />
+		<br />
+
+		<h:outputLabel value="Equipos Favoritos:" for="favoritos2" />&nbsp;
+		<h:selectManyListbox value="#{componenteBean.equiposFavoritos}"
+			id="favoritos2" size="4">
+			<f:selectItem itemValue="Nacional" itemLabel="Atletico Nacional" />
+			<f:selectItem itemValue="jaguares" />
+			<f:selectItem itemValue="junior" />
+			<f:selectItem itemValue="america" />
+			<f:selectItem itemValue="deportivo cali" />
+		</h:selectManyListbox>
+
+		<br />
+		<br />
+		<h:outputLabel value="Sexo:" for="sexo" />&nbsp;
+		<h:selectOneRadio id="sexo" layout="pageDirection">
+			<f:selectItem itemLabel="Masculino" itemValue="M" />
+			<f:selectItem itemLabel="Femenino" itemValue="F" />
+		</h:selectOneRadio>
+
+		<br />
+		<br />
+		<h:selectBooleanCheckbox id="acepta" value="true" />
+		<h:outputLabel value="Acepta el contracto" for="acepta" />
+
+		<br />
+		<br />
+
+		<h:selectManyCheckbox value="#{componenteBean.lenguajes}">
+			<f:selectItem itemLabel="Java" itemValue="1" />
+			<f:selectItem itemLabel="C#" itemValue="2" />
+			<f:selectItem itemLabel="Phyton" itemValue="3" />
+			<f:selectItem itemLabel="PHP" itemValue="3" />
+		</h:selectManyCheckbox>
+
+		<br />
+		<br />
+		<input type="button" value="modificar valor"
+			onclick="modificarValor()" />
+		<br />
+		<br />
+		<h:graphicImage value="img/web-n001.jpg" width="200" />
+		<br />
+		<br />
+		<h:graphicImage library="img" name="n002.png" width="300" />
+
+		<br />
+		<br />
+
+		<h:selectOneListbox size="5" value="#{miCiudadBean.ciudadNatal}">
+			<f:selectItems value="#{miCiudadBean.totasCiudades}" />
+		</h:selectOneListbox>
+
+		<br />
+		<br />
+
+		<h:commandButton value="Registrar" id="registrar" type="submit"
+			action="#{componenteBean.registrar}" />
+
+		<br />
+		<h:commandButton value="limpiar" id="limpiar" type="reset" />
+
+		<br />
+		<h:commandButton value="imprimir" id="imprimir"
+			image="/resources/img/n003.png" />
+
+		<br />
+		<h:commandLink value="Link Registrar" id="linkregistrar"
+			action="#{componenteBean.registrar}" />
+
+		<br />
+		<h:commandLink id="linkImprimir" action="#{componenteBean.registrar}">
+			<h:graphicImage value="/resources/img/n003.png" />
+			<h:outputText value="imprimir" />
+		</h:commandLink>
+
+		<br />
+		<h:outputLink value="http://google.com.co" id="linkImprimirDoc"
+			target="_blank">
+			<h:graphicImage library="img" name="n003.png" width="150" />
+		</h:outputLink>
+		<br/>
+		<br/>
+		<h:outputLink value="http://google.com.co" id="linkImprimirDoc2"
+			target="_blank">
+			<f:param name="codigo" value="123"/>
+			<f:param name="busqueda" value="buscar"/>
+			<h:graphicImage library="img" name="n003.png" width="150" />
+		</h:outputLink>
+
+	</h:form>
+
+</h:body>
+</html>
