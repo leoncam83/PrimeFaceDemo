@@ -1,4 +1,4 @@
-package com.leosoft.jpa;
+package com.leosoft.util;
 
 import java.io.Serializable;
 

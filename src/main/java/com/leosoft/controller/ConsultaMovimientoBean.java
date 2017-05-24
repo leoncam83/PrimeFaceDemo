@@ -6,19 +6,20 @@ package com.leosoft.controller;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 
-import com.leosoft.jpa.JPAUtil;
 import com.leosoft.model.Movimiento;
 import com.leosoft.repository.MovimientoRepository;
+import com.leosoft.util.JPAUtil;
 
 /**
  * @author leonc
  *
  */
-@ManagedBean
+@Named
 @ViewScoped
 public class ConsultaMovimientoBean implements Serializable {
 
@@ -26,13 +27,14 @@ public class ConsultaMovimientoBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6759575805883010854L;
+	
+	@Inject
+	private MovimientoRepository movimientoRepository;
+	
 	private List<Movimiento> movimientos;
 	
-	public void consultar(){
-		EntityManager manager = JPAUtil.getManager();
-		MovimientoRepository reposirtory = new MovimientoRepository(manager);
-		movimientos = reposirtory.todos();
-		manager.close();
+	public void consultar(){		
+		movimientos = movimientoRepository.todos();		
 	}
 
 	public List<Movimiento> getMovimientos() {

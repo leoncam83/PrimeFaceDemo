@@ -1,9 +1,8 @@
 /**
  * 
  */
-package com.leosoft.jpa;
+package com.leosoft.util;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
 

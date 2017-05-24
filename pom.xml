@@ -88,5 +88,11 @@
 			<version>5.2.8.Final</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.4.3.Final</version>
+		</dependency>
+
 	</dependencies>
 </project>

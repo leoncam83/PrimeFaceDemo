@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.leosoft.jpa;
+package com.leosoft.util;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
